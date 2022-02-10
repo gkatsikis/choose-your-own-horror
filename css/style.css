@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+
+@media only screen and (min-width: 600px) {
+
+  main {
+    width: 700px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+    "option1 text option2"
+    "option1 text option2"
+    "option1 . option2"
+    ". player .";
+  }
+
+  body {
+  background-image: url(../assets/images/road.jpg);
+  ;
+}
+
+#haunted-house{
+  grid-area: option1;
+}
+
+#GA-building{
+  grid-area: option2;
+}
+}
