@@ -22,6 +22,7 @@ html {
   background-image: url(../assets/images/road.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100%;
 }
 
 #options {
