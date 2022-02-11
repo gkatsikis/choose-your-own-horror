@@ -42,6 +42,9 @@ const option1 = document.querySelector("#option1")
 
 const option2 = document.querySelector("#option2")
 
+const message = document.querySelector("#message")
+
+let test = document.querySelector('p')
 
 // ----------------EVENT LISTENERS---------------
 
@@ -61,20 +64,16 @@ player.addEventListener('click', () => {
 
 
 // -------------------FUNCTIONS---------------------------
-
+init()
 function init() {
-  
+  replace(start)
 }
 
-function render() {
-
-}
-
-function replace (obj) {
+function replace(obj) {
   changeBackground(obj) // done
   changeOption1(obj) // done
   changeOption2(obj) // done
-  changeMessage(obj)
+  changeMessage(obj) // done
 }
 
 function changeBackground(obj) {
@@ -90,7 +89,7 @@ function changeOption2(obj) {
 }
 
 function changeMessage(obj) {
-
+  message.innerHTML = `${obj.message}`
 }
 
 function webcamEnding() {
