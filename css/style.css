@@ -33,7 +33,7 @@ html {
   "option1 message option2";
 }
 
-#haunted-house {
+#option1 {
   height: 300px;
   grid-area: option1;
   border: 1px solid red;
@@ -42,7 +42,7 @@ html {
   /* width: auto; */
 }
 
-#GA-building {
+#option2 {
   grid-area: option2;
   height: 400px;
   border: 1px solid red;
@@ -62,12 +62,11 @@ html {
   border: 1px solid red;
   align-items: center;
   justify-content: center;
+  height: 
 }
 
 #player img {
   height: 400px;
   width: 300px;
   border: 1px solid red;
-  padding-top: 35px;
-}
 }
