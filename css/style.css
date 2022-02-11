@@ -50,10 +50,11 @@ html {
   height: 100%;
 }
 
-#player-message {
+#message {
   grid-area: message;
   color: whitesmoke;
   border: 1px solid red;
+  text-align: center;
 }
 
 #player {

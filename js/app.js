@@ -3,6 +3,7 @@ const images = [
   'GA-building1.png', 'haunted-house.png', 'player.png', 
   'road.jpg', 'classroom.jpg', 'computer-lab.jpg','GA-inside.png','GA-room1.jpg','inside-house.jpg', 'portal.png']
 
+
 const start = {
   background: images[3],
   option1: images[1],
@@ -28,9 +29,7 @@ const GABuilding = {
 
 
 
-function changeBackground(obj) {
-  document.body.style.backgroundImage = `url("../assets/images/${obj.background}")`
-}
+
 
 
 
@@ -73,30 +72,24 @@ function render() {
 
 function replace (obj) {
   changeBackground(obj) // done
-  changeOption1(obj)
-  changeOption2(obj)
+  changeOption1(obj) // done
+  changeOption2(obj) // done
   changeMessage(obj)
 }
 
-
-// changeOption1('#haunted-house', images[5])
-function changeImageSrc (evt, newSrc) {
-  evt.src=`../assets/images/${newSrc}`
+function changeBackground(obj) {
+  document.body.style.backgroundImage = `url("../assets/images/${obj.background}")`
 }
 
-
-
-
-function changeOption1(remove, add) {
-  let image1 = document.querySelector(remove)
-  image1.parentNode.removeChild(image1)
+function changeOption1(obj) {
+  option1.src=`../assets/images/${obj.option1}`
 }
 
-function changeOption2(evt) {
-
+function changeOption2(obj) {
+  option2.src=`../assets/images/${obj.option2}`
 }
 
-function changeMessage(evt) {
+function changeMessage(obj) {
 
 }
 
