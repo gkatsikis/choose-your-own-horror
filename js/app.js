@@ -1,4 +1,6 @@
 // ---------------------VARIABLES------------------------
+let lvlId = null
+
 const images = [
   'GA-building1.png', 'haunted-house.png', 'player.png', 
   'road.jpg', 'classroom.jpg', 'computer-lab.jpg','GA-inside.png','GA-room1.jpg','inside-house.jpg', 'portal.png']
@@ -9,6 +11,7 @@ const start = {
   option1: images[1],
   option2: images[0],
   message: "Make your choice and stop bothering me",
+  level: 'lvl-0',
 }
 
 // changeBackground(8)
@@ -18,16 +21,24 @@ const hauntedHouse = {
   option1: images[9],
   option2: images[9],
   message: "I probably wouldn't choose either of them if i were you",
+  level: 'lvl-1',
 }
 
 const GABuilding = {
   background: images[5],
   option1: images[9],
   option2: images[9],
-  message: "Maybe...you should have chosen Flatiron?"
+  message: "Maybe...you should have chosen Flatiron?",
+  level: 'lvl-2',
 }
 
-
+const classroom = {
+  background: images[4],
+  option1: images[9],
+  option2: images[9],
+  message: "Can't believe it actually worked",
+  level: 'lvl-5',
+}
 
 
 
@@ -49,7 +60,11 @@ let test = document.querySelector('p')
 // ----------------EVENT LISTENERS---------------
 
 option1.addEventListener('click', () => {
-  
+  if (lvlId === 'lvl-2') {
+    replace(classroom)
+  } else if (lvlId === 'lvl-0') {
+    replace(hauntedHouse)
+  }
 })
 
 option2.addEventListener('click', () => {
@@ -70,6 +85,7 @@ function init() {
 }
 
 function replace(obj) {
+  changeLevel(obj)
   changeBackground(obj) // done
   changeOption1(obj) // done
   changeOption2(obj) // done
@@ -90,6 +106,12 @@ function changeOption2(obj) {
 
 function changeMessage(obj) {
   message.innerHTML = `${obj.message}`
+}
+
+function changeLevel(obj) {
+  let lvlId = document.querySelector(`#${obj.level}`)
+  document.createElement('div', { id : `${obj.level}`})
+  return lvlId
 }
 
 function webcamEnding() {
