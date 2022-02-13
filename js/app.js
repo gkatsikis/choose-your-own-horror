@@ -10,18 +10,16 @@ const start = {
   background: images[3],
   option1: images[1],
   option2: images[0],
-  message: "Make your choice and stop bothering me",
-  level: 'lvl-0',
+  message: "You wake up on a dark road with two choices before you...do you enter the house that screams of malevolence...or do you enter the building that offers knowledge that leads one to madness?",
+  level: 0,
 }
-
-// changeBackground(8)
 
 const hauntedHouse = {
   background: images[8],
   option1: images[9],
   option2: images[9],
   message: "I probably wouldn't choose either of them if i were you",
-  level: 'lvl-1',
+  level: 1,
 }
 
 const GABuilding = {
@@ -29,7 +27,7 @@ const GABuilding = {
   option1: images[9],
   option2: images[9],
   message: "Maybe...you should have chosen Flatiron?",
-  level: 'lvl-2',
+  level: 2,
 }
 
 const classroom = {
@@ -37,11 +35,48 @@ const classroom = {
   option1: images[9],
   option2: images[9],
   message: "Can't believe it actually worked",
-  level: 'lvl-5',
+  level: 5,
 }
 
+const GAInside = {
+  background: images[6],
+  option1: images[9],
+  option2: images[9],
+  message: "Is it working????",
+  level: 6,
+}
 
+// const basement = {
+//   background:
+//   option1:
+//   option2:
+//   message:
+//   level: 3
+// }
 
+// const upstairs = {
+//   background:
+//   option1:
+//   option2:
+//   message:
+//   level: 4
+// }
+
+// const escape = {
+//   background:
+//   option1:
+//   option2:
+//   message:
+//   level: 7
+// }
+
+// const final = {
+//   background:
+//   option1:
+//   option2:
+//   message:
+//   level: 8
+// }
 
 
 //---------------------CACHED ELEMENT REFERENCES-----
@@ -55,20 +90,26 @@ const option2 = document.querySelector("#option2")
 
 const message = document.querySelector("#message")
 
-let test = document.querySelector('p')
-
 // ----------------EVENT LISTENERS---------------
 
 option1.addEventListener('click', () => {
-  if (lvlId === 'lvl-2') {
+  if (lvlId === 2) {
     replace(classroom)
-  } else if (lvlId === 'lvl-0') {
+  } else if (lvlId === 1) {
+    replace(basement)
+  } else if (lvlId === 0) {
     replace(hauntedHouse)
   }
 })
 
 option2.addEventListener('click', () => {
-  
+  if (lvlId === 2) {
+    replace(GAInside)
+  } else if (lvlId === 1) {
+    replace(upstairs)
+  } else if (lvlId === 0) {
+    replace(GABuilding)
+  }
 })
 
 player.addEventListener('click', () => {
@@ -80,6 +121,7 @@ player.addEventListener('click', () => {
 
 // -------------------FUNCTIONS---------------------------
 init()
+
 function init() {
   replace(start)
 }
@@ -109,14 +151,13 @@ function changeMessage(obj) {
 }
 
 function changeLevel(obj) {
-  let lvlId = document.querySelector(`#${obj.level}`)
-  document.createElement('div', { id : `${obj.level}`})
+  lvlId = obj.level
   return lvlId
 }
 
-function webcamEnding() {
+// function webcamEnding() {
 
-}
+// }
 
 function replay() {
   init()

@@ -55,6 +55,8 @@ html {
   color: whitesmoke;
   border: 1px solid red;
   text-align: center;
+  font-size: 1.7rem;
+  font-family: 'Special Elite', cursive;
 }
 
 #player {
