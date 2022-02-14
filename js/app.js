@@ -155,7 +155,7 @@ function init() {
 
 function replay() {
   toggleReplayBtn()
-  init()
+  toggleStartBtn()
 }
 
 function replace(obj) {
@@ -168,13 +168,16 @@ function replace(obj) {
 }
 
 function toggleStartBtn(evt) {
-  let switchBtn = startBtn.style.display = 'block' ? startBtn.style.display = 'none' : startBtn.style.display = 'block'
+  let switchBtn1 = startBtn.style.display = 'block' ? startBtn.style.display = 'none' : startBtn.style.display = 'block'
 }
 
+// toggleReplayBtn()
 function toggleReplayBtn(evt) {
-  // let switchBtn = replayBtn.style.visibility = 'visible' ? replayBtn.style.display = 'hidden' : replayBtn.style.display = 'visible'
-  let switchBtn = replayBtn.style.display = 'block' ? replayBtn.setAttribute('hidden') : replayBtn.removeAttribute('hidden', false)
-}
+  let switchBtn2 = replayBtn.getAttribute('hidden') !== null ? replayBtn.removeAttribute('hidden') :  replayBtn.setAttribute('hidden', true)
+  }
+  // replayBtn.removeAttribute('hidden')
+  // replayBtn.setAttribute('hidden', true)
+
 
 function changeBackground(obj) {
   document.body.style.backgroundImage = `url("../assets/images/${obj.background}")`
