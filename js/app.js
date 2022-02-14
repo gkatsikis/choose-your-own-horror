@@ -3,7 +3,7 @@ let lvlId = null
 
 const images = [
   'GA-building1.png', 'haunted-house.png', 'player.png', 
-  'road.jpg', 'classroom.jpg', 'computer-lab.jpg','GA-inside.png','GA-room1.jpg','inside-house.jpg', 'portal.png', 'basement.jpg', 'final.png']
+  'road.jpg', 'classroom.jpg', 'computer-lab.jpg','GA-inside.png','GA-room1.jpg','inside-house.jpg', 'portal.png', 'basement.jpg', 'final.png', 'transparent.png']
 
 
 const start = {
@@ -35,17 +35,17 @@ const GABuilding = {
 
 const classroom = {
   background: images[4],
-  option1: images[9],
-  option2: images[9],
-  message: "Can't believe it actually worked",
+  option1: images[12],
+  option2: images[12],
+  message: "You have been found by the followers...they will now convert you...",
   level: 5,
   // audio: //chanting,
 }
 
 const GAInside = {
   background: images[6],
-  option1: images[9],
-  option2: images[9],
+  option1: "",
+  option2: "",
   message: "Ah, I see you've come to join us...welcome to level 6",
   level: 6,
   audio: 'heartbeat.mp3',
@@ -53,8 +53,8 @@ const GAInside = {
 
 const basement = {
   background: images[10],
-  option1:images[9],
-  option2: images[9],
+  option1:"",
+  option2: "",
   message: "Why would you go into the basement of a house like this? This is where we like to play...",
   level: 3,
   audio: 'demongirl2.mp3',
@@ -69,14 +69,14 @@ const upstairs = {
   audio: 'ambience2.mp3',
 }
 
-// const escapeRoom = {
-//   background: body on the street
-//   option1: "",
-//   option2: "",
-//   message: "I'm afraid you had a little fall... You survived to level 7",
-//   level: 7,
-//   audio: 'campy-laugh.mp3',
-// }
+const escapeRoom = {
+  background: "",
+  option1: "",
+  option2: "",
+  message: "I'm afraid you had a little fall... You survived to level 7",
+  level: 7,
+  audio: 'campy-laugh.mp3',
+}
 
 const final = {
   background: images[11],
@@ -122,7 +122,7 @@ option2.addEventListener('click', () => {
     replace(GABuilding)
   // } else if (lvlId === 4) {
   //   webcam.start()
-  // }
+  }
 })
 
 player.addEventListener('click', () => {
@@ -133,7 +133,7 @@ player.addEventListener('click', () => {
 
 
 // -------------------FUNCTIONS---------------------------
-init()
+// init()
 
 function init() {
   replace(start)
