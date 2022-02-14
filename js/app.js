@@ -3,14 +3,17 @@ let lvlId = null
 
 const images = [
   'GA-building1.png', 'haunted-house.png', 'player.png', 
-  'road.jpg', 'classroom.jpg', 'computer-lab.jpg','GA-inside.png','GA-room1.jpg','inside-house.jpg', 'portal.png', 'basement.jpg', 'final.png', 'transparent.png']
+  'road.jpg', 'classroom.jpg', 'computer-lab.jpg',
+  'GA-inside.png','GA-room1.jpg','inside-house.jpg', 
+  'portal.png', 'basement.jpg', 'final.png', 
+  'transparent.png']
 
 
 const start = {
   background: images[3],
   option1: images[1],
   option2: images[0],
-  message: "You wake up on a dark road with two choices before you...do you enter the house that screams of malevolence...or do you enter the building that offers knowledge that leads one to madness?",
+  message: "You wake up on a dark road with two choices before you...do you enter the house that screams of malevolence...or do you enter the building that offers knowledge unto madness?",
   level: 0,
   audio: 'ambience.mp3',
 }
@@ -44,8 +47,8 @@ const classroom = {
 
 const GAInside = {
   background: images[6],
-  option1: "",
-  option2: "",
+  option1: images[12],
+  option2: images[12],
   message: "Ah, I see you've come to join us...welcome to level 6",
   level: 6,
   audio: 'heartbeat.mp3',
@@ -53,8 +56,8 @@ const GAInside = {
 
 const basement = {
   background: images[10],
-  option1:"",
-  option2: "",
+  option1:images[12],
+  option2: images[12],
   message: "Why would you go into the basement of a house like this? This is where we like to play...",
   level: 3,
   audio: 'demongirl2.mp3',
@@ -71,8 +74,8 @@ const upstairs = {
 
 const escapeRoom = {
   background: "",
-  option1: "",
-  option2: "",
+  option1: images[12],
+  option2: images[12],
   message: "I'm afraid you had a little fall... You survived to level 7",
   level: 7,
   audio: 'campy-laugh.mp3',
@@ -80,8 +83,8 @@ const escapeRoom = {
 
 const final = {
   background: images[11],
-  option1: "",
-  option2: "",
+  option1: images[12],
+  option2: images[12],
   message: "Congratulations...you made it to the final level. Look behind you.",
   level: 8,
   audio: 'hell-ambience.mp3',
@@ -99,13 +102,22 @@ const option2 = document.querySelector("#option2")
 
 const message = document.querySelector("#message")
 
+const startBtn = document.querySelector("#start-game")
+
+const replayBtn = document.querySelector("#replay")
+
 // ----------------EVENT LISTENERS---------------
+
+startBtn.addEventListener('click', init)
+
+replayBtn.addEventListener('click', init)
 
 option1.addEventListener('click', () => {
   if (lvlId === 2) {
     replace(classroom)
   } else if (lvlId === 1) {
     replace(basement)
+    replayBtn.style.display = "block"
   } else if (lvlId === 0) {
     replace(hauntedHouse)
   } else if (lvlId === 4) {
@@ -125,9 +137,9 @@ option2.addEventListener('click', () => {
   }
 })
 
-player.addEventListener('click', () => {
+// player.addEventListener('click', () => {
   
-})
+// })
 
 
 
@@ -137,6 +149,13 @@ player.addEventListener('click', () => {
 
 function init() {
   replace(start)
+  toggleStartBtn()
+  toggleReplayBtn()
+}
+
+function replay() {
+  toggleReplayBtn()
+  init()
 }
 
 function replace(obj) {
@@ -146,6 +165,15 @@ function replace(obj) {
   changeOption2(obj) // done
   changeMessage(obj) // done
   changeAudio(obj)
+}
+
+function toggleStartBtn(evt) {
+  let switchBtn = startBtn.style.display = 'block' ? startBtn.style.display = 'none' : startBtn.style.display = 'block'
+}
+
+function toggleReplayBtn(evt) {
+  // let switchBtn = replayBtn.style.visibility = 'visible' ? replayBtn.style.display = 'hidden' : replayBtn.style.display = 'visible'
+  let switchBtn = replayBtn.style.display = 'block' ? replayBtn.setAttribute('hidden') : replayBtn.removeAttribute('hidden', false)
 }
 
 function changeBackground(obj) {

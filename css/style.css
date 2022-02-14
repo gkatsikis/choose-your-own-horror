@@ -59,6 +59,15 @@ html {
   font-family: 'Special Elite', cursive;
 }
 
+#start-button {
+  display: flex;
+  border: 1px solid red;
+  font-family: 'Special Elite', cursive;
+  font-weight: bold;
+  align-items: left;
+  justify-content: left;
+}
+
 #player {
   grid-area: player;
   display: flex;
