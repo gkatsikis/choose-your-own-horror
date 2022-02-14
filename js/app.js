@@ -8,6 +8,18 @@ const images = [
   'portal.png', 'basement.jpg', 'final.png', 
   'transparent.png']
 
+const audio = {
+  0: 'ambience.mp3',
+  1: 'demongirl.mp3',
+  2: 'creaking-door.mp3',
+  3: 'demongirl2.mp3',
+  4: 'ambience2.mp3',
+  5: 'chanting.mp3',
+  6: 'heartbeat.mp3',
+  7: 'campy-laugh.mp3',
+  8: 'hell-ambience.mp3',
+}
+
 
 const start = {
   background: images[3],
@@ -15,7 +27,7 @@ const start = {
   option2: images[0],
   message: "You wake up on a dark road with two choices before you...do you enter the house that screams of malevolence...or do you enter the building that offers knowledge unto madness?",
   level: 0,
-  audio: 'ambience.mp3',
+  audio: 'ambience.mp3'
 }
 
 const hauntedHouse = {
@@ -33,26 +45,10 @@ const GABuilding = {
   option2: images[9],
   message: "Maybe...you should have chosen Flatiron?/n ",
   level: 2,
-  audio: 'creaking-door.mp3'
+  audio: 'creaking-door.mp3',
 }
 
-const classroom = {
-  background: images[4],
-  option1: images[12],
-  option2: images[12],
-  message: "You have been found by the followers...they will now convert you...",
-  level: 5,
-  // audio: //chanting,
-}
 
-const GAInside = {
-  background: images[6],
-  option1: images[12],
-  option2: images[12],
-  message: "Ah, I see you've come to join us...welcome to level 6",
-  level: 6,
-  audio: 'heartbeat.mp3',
-}
 
 const basement = {
   background: images[10],
@@ -60,7 +56,7 @@ const basement = {
   option2: images[12],
   message: "Why would you go into the basement of a house like this? This is where we like to play...",
   level: 3,
-  audio: 'demongirl2.mp3',
+  audio: 'demongirl2.mp3'
 }
 
 const upstairs = {
@@ -69,7 +65,25 @@ const upstairs = {
   option2: images[9],
   message: "You come upstairs and there's someone on the computer...do you try to climb out through the window or approach them?",
   level: 4,
-  audio: 'ambience2.mp3',
+  audio: 'ambience2.mp3'
+}
+
+const classroom = {
+  background: images[4],
+  option1: images[12],
+  option2: images[12],
+  message: "You have been found by the followers...they will now convert you...",
+  level: 5,
+  audio: 'chanting.mp3',
+}
+
+const GAInside = {
+  background: images[6],
+  option1: images[12],
+  option2: images[12],
+  message: "Ah, I see you've come to join us...welcome to level 6",
+  level: 6,
+  audio: 'heartbeat.mp3'
 }
 
 const escapeRoom = {
@@ -78,7 +92,7 @@ const escapeRoom = {
   option2: images[12],
   message: "I'm afraid you had a little fall... You survived to level 7",
   level: 7,
-  audio: 'campy-laugh.mp3',
+  audio: 'campy-laugh.mp3'
 }
 
 const final = {
@@ -87,7 +101,7 @@ const final = {
   option2: images[12],
   message: "Congratulations...you made it to the final level. Look behind you.",
   level: 8,
-  audio: 'hell-ambience.mp3',
+  audio: 'hell-ambience.mp3'
 }
 
 
@@ -110,24 +124,28 @@ const replayBtn = document.querySelector("#replay")
 
 startBtn.addEventListener('click', init)
 
-replayBtn.addEventListener('click', init)
+replayBtn.addEventListener('click', replay)
 
 option1.addEventListener('click', () => {
   if (lvlId === 2) {
     replace(classroom)
+    toggleReplayBtn()
   } else if (lvlId === 1) {
     replace(basement)
+    toggleReplayBtn()
     replayBtn.style.display = "block"
   } else if (lvlId === 0) {
     replace(hauntedHouse)
   } else if (lvlId === 4) {
     replace(escapeRoom)
+    toggleReplayBtn()
   }
 })
 
 option2.addEventListener('click', () => {
   if (lvlId === 2) {
     replace(GAInside)
+    toggleReplayBtn()
   } else if (lvlId === 1) {
     replace(upstairs)
   } else if (lvlId === 0) {
@@ -141,43 +159,34 @@ option2.addEventListener('click', () => {
   
 // })
 
-
-
-
 // -------------------FUNCTIONS---------------------------
-// init()
 
 function init() {
   replace(start)
   toggleStartBtn()
-  toggleReplayBtn()
 }
 
 function replay() {
   toggleReplayBtn()
-  toggleStartBtn()
+  init()
 }
 
 function replace(obj) {
-  changeLevel(obj)
+  changeLevel(obj) // done
   changeBackground(obj) // done
   changeOption1(obj) // done
   changeOption2(obj) // done
   changeMessage(obj) // done
-  changeAudio(obj)
+  changeAudio(obj) //done
 }
 
 function toggleStartBtn(evt) {
-  let switchBtn1 = startBtn.style.display = 'block' ? startBtn.style.display = 'none' : startBtn.style.display = 'block'
+  let switchBtn1 = startBtn.getAttribute('hidden') === null ? startBtn.setAttribute('hidden', true) : startBtn.removeAttribute('hidden')
 }
 
-// toggleReplayBtn()
 function toggleReplayBtn(evt) {
   let switchBtn2 = replayBtn.getAttribute('hidden') !== null ? replayBtn.removeAttribute('hidden') :  replayBtn.setAttribute('hidden', true)
   }
-  // replayBtn.removeAttribute('hidden')
-  // replayBtn.setAttribute('hidden', true)
-
 
 function changeBackground(obj) {
   document.body.style.backgroundImage = `url("../assets/images/${obj.background}")`
@@ -197,23 +206,31 @@ function changeMessage(obj) {
 
 function changeLevel(obj) {
   lvlId = obj.level
+  // audio[lvlId].pause()
   return lvlId
 }
 
+// -------------------original function----
+// function changeAudio(obj) {  
+//     let audioFile = new Audio(`../assets/audio/${obj.audio}`)
+//     audioFile.volume = .25
+//     audioFile.play()
+//     audioFile.addEventListener('ended', () => {
+//       audioFile.currentTime = 0
+//       audioFile.play()
+//     }, false)
+//     }
+// will loop forever and overlap
+
+//--------------new function---------
 function changeAudio(obj) {
-    let audioFile = new Audio(`../assets/audio/${obj.audio}`)
-    audioFile.volume = .25
+  let audioFile = new Audio(`../assets/audio/${obj.audio}`)
+  audioFile.volume = .25
+  audioFile.play()
+  audioFile.addEventListener('ended', () => {
+    audioFile.currentTime = 0
     audioFile.play()
-    audioFile.addEventListener('ended', () => {
-      audioFile.currentTime = 0
-      audioFile.play()
-    }, false)
-    }
-
-// function webcamEnding() {
-
-// }
-
-function replay() {
-  init()
+  }, false)
 }
+    
+// function webcamEnding() {}
