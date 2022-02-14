@@ -2,7 +2,7 @@
 let lvlId = null
 
 const images = [
-  'GA-building1.png', 'haunted-house.png', 'player.png', 
+  'GA-building1.png', 'haunted-house.png', 'player2.png', 
   'road.jpg', 'classroom.jpg', 'computer-lab.jpg',
   'GA-inside.png','GA-room1.jpg','inside-house.jpg', 
   'portal.png', 'basement.jpg', 'final.png', 
@@ -81,16 +81,16 @@ const GAInside = {
   background: images[6],
   option1: images[12],
   option2: images[12],
-  message: "Ah, I see you've come to join us...welcome to level 6",
+  message: "Ah, I see you've come to join us...congratulations on seeing the light",
   level: 6,
   audio: 'heartbeat.mp3'
 }
 
 const escapeRoom = {
-  background: "",
+  background: images[3],
   option1: images[12],
   option2: images[12],
-  message: "I'm afraid you had a little fall... You survived to level 7",
+  message: "I'm afraid you had a little fall... watch your step next time...",
   level: 7,
   audio: 'campy-laugh.mp3'
 }
@@ -150,10 +150,11 @@ option2.addEventListener('click', () => {
     replace(upstairs)
   } else if (lvlId === 0) {
     replace(GABuilding)
-  // } else if (lvlId === 4) {
-  //   webcam.start()
+  } else if (lvlId === 4) {
+    console.log('final room')
   }
 })
+
 
 // player.addEventListener('click', () => {
   
