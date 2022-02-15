@@ -8,7 +8,7 @@ const images = [
   'portal.png', 'basement.jpg', 'final.png', 
   'transparent.png', 'window.png']
 
-const audio = {
+const lvlAudio = {
   0: 'ambience.mp3',
   1: 'demongirl.mp3',
   2: 'creaking-door.mp3',
@@ -20,6 +20,7 @@ const audio = {
   8: 'hell-ambience.mp3',
 }
 
+let audioFile = new Audio('../assets/audio/ambience.mp3')
 
 const start = {
   background: images[3],
@@ -32,8 +33,8 @@ const start = {
 
 const hauntedHouse = {
   background: images[8],
-  option1: images[9],
-  option2: images[9],
+  option1: images[12],
+  option2: images[12],
   message: "Upon entering, you are confronted with disturbing figures and hear footsteps approaching. Do you run upstairs or head to the basement?",
   level: 1,
   audio: 'demongirl.mp3',
@@ -83,7 +84,7 @@ const GAInside = {
   option2: images[12],
   message: "Ah, I see you've come to join us...congratulations on seeing the light. You have survived.",
   level: 6,
-  audio: 'heartbeat.mp3'
+  audio: 'campy-laugh.mp3'
 }
 
 const escapeRoom = {
@@ -92,7 +93,7 @@ const escapeRoom = {
   option2: images[12],
   message: "I'm afraid you had a little fall... watch your step next time...",
   level: 7,
-  audio: 'campy-laugh.mp3'
+  audio: 'heartbeat.mp3'
 }
 
 const final = {
@@ -235,7 +236,8 @@ function changeLevel(obj) {
 
 //--------------new function---------
 function changeAudio(obj) {
-  let audioFile = new Audio(`../assets/audio/${obj.audio}`)
+  audioFile.pause()
+  audioFile = new Audio(`../assets/audio/${obj.audio}`)
   audioFile.volume = .25
   audioFile.play()
   audioFile.addEventListener('ended', () => {
