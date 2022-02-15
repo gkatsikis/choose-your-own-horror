@@ -6,7 +6,7 @@ const images = [
   'road.jpg', 'classroom.jpg', 'computer-lab.jpg',
   'GA-inside.png','GA-room1.jpg','inside-house.jpg', 
   'portal.png', 'basement.jpg', 'final.png', 
-  'transparent.png']
+  'transparent.png', 'bloodsplatter.png']
 
 const audio = {
   0: 'ambience.mp3',
@@ -25,7 +25,7 @@ const start = {
   background: images[3],
   option1: images[1],
   option2: images[0],
-  message: "You wake up on a dark road with two choices before you...do you enter the house that screams of malevolence...or do you enter the building that offers knowledge unto madness?",
+  message: "You wake up on a dark road with two choices before you...do you enter the house that screams of malevolence...or do you enter the building where you faintly hear the sound of chanting?",
   level: 0,
   audio: 'ambience.mp3'
 }
@@ -34,16 +34,16 @@ const hauntedHouse = {
   background: images[8],
   option1: images[9],
   option2: images[9],
-  message: "Upon entering, you are confronted with disturbing figures and hear footsteps approaching. Do you head to the basement or run upstairs?",
+  message: "Upon entering, you are confronted with disturbing figures and hear footsteps approaching. Do you run upstairs or head to the basement?",
   level: 1,
   audio: 'demongirl.mp3',
 }
 
 const GABuilding = {
   background: images[5],
-  option1: images[9],
-  option2: images[9],
-  message: "Maybe...you should have chosen Flatiron?/n ",
+  option1: images[12],
+  option2: images[12],
+  message: "Maybe...you should have chosen Flatiron? There's the sound of faint chanting. Do you head towards it or head away?",
   level: 2,
   audio: 'creaking-door.mp3',
 }
@@ -62,7 +62,7 @@ const basement = {
 const upstairs = {
   background: images[11],
   option1: images[9],
-  option2: images[9],
+  option2: images[12],
   message: "You come upstairs and there's someone on the computer...do you try to climb out through the window or approach them?",
   level: 4,
   audio: 'ambience2.mp3'
@@ -150,15 +150,24 @@ option2.addEventListener('click', () => {
     replace(upstairs)
   } else if (lvlId === 0) {
     replace(GABuilding)
+    option2.addEventListener('mouseover', chant)
   } else if (lvlId === 4) {
     console.log('final room')
   }
 })
-
-
 // player.addEventListener('click', () => {
   
 // })
+
+function chant() {
+  let chanting = new Audio('../assets/audio/hell-ambience.mp3')
+      chanting.volume = .15
+      chanting.play()
+      setTimeout(() => {
+        chanting.stop()
+      }, 2000)
+}
+
 
 // -------------------FUNCTIONS---------------------------
 
