@@ -6,7 +6,7 @@ const images = [
   'road.jpg', 'classroom.jpg', 'computer-lab.jpg',
   'GA-inside.png','GA-room1.jpg','inside-house.jpg', 
   'portal.png', 'basement.jpg', 'final.png', 
-  'transparent.png', 'bloodsplatter.png']
+  'transparent.png', 'window.png']
 
 const audio = {
   0: 'ambience.mp3',
@@ -45,7 +45,7 @@ const GABuilding = {
   option2: images[12],
   message: "Maybe...you should have chosen Flatiron? There's the sound of faint chanting. Do you head towards it or head away?",
   level: 2,
-  audio: 'creaking-door.mp3',
+  audio: '',
 }
 
 
@@ -61,8 +61,8 @@ const basement = {
 
 const upstairs = {
   background: images[11],
-  option1: images[9],
-  option2: images[12],
+  option1: images[13],
+  option2: images[9],
   message: "You come upstairs and there's someone on the computer...do you try to climb out through the window or approach them?",
   level: 4,
   audio: 'ambience2.mp3'
@@ -81,7 +81,7 @@ const GAInside = {
   background: images[6],
   option1: images[12],
   option2: images[12],
-  message: "Ah, I see you've come to join us...congratulations on seeing the light",
+  message: "Ah, I see you've come to join us...congratulations on seeing the light. You have survived.",
   level: 6,
   audio: 'heartbeat.mp3'
 }
@@ -148,6 +148,7 @@ option2.addEventListener('click', () => {
     toggleReplayBtn()
   } else if (lvlId === 1) {
     replace(upstairs)
+    player.parentElement.removeChild(player)
   } else if (lvlId === 0) {
     replace(GABuilding)
     option2.addEventListener('mouseover', chant)
@@ -164,8 +165,8 @@ function chant() {
       chanting.volume = .15
       chanting.play()
       setTimeout(() => {
-        chanting.stop()
-      }, 2000)
+        this.chanting.stop()
+      }, 1000)
 }
 
 

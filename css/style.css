@@ -43,10 +43,13 @@ body {
   main {
     /* width: 100%; */
     display: grid;
-    grid-template-rows: auto 100px;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto auto;
     grid-template-areas:
-    "options"
-    "player";
+    "option1 message option2"
+    "option1 player option2"
+    "option1 player option2";
+    border: 10px solid green;
   }
 
   body {
@@ -58,10 +61,6 @@ body {
 
 #options {
   grid-area: options;
-  display: grid;
-  grid-template-columns: 30% auto 30%;
-  grid-template-areas: 
-  "option1 message option2";
 }
 
 #option1 {
