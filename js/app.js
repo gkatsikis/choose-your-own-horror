@@ -165,7 +165,7 @@ function chant() {
       chanting.volume = .15
       chanting.play()
       setTimeout(() => {
-        this.chanting.stop()
+        chant.chanting.stop()
       }, 1000)
 }
 
