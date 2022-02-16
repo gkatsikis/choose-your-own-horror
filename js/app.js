@@ -2,11 +2,11 @@
 let lvlId = null
 
 const images = [
-  'GA-building1.png', 'haunted-house.png', 'player2.png', 
+  'GA-building1.png', 'haunted-house.png', 'player2.png',
   'road.jpg', 'classroom.jpg', 'computer-lab.jpg',
-  'GA-inside.png','GA-room1.jpg','inside-house.jpg', 
-  'portal.png', 'basement.jpg', 'final.png', 
-  'transparent.png', 'window.png',]
+  'GA-inside.png', 'GA-room1.jpg', 'inside-house.jpg',
+  'portal.png', 'basement.jpg', 'final.png',
+  'transparent.png', 'window.png', 'up-arrow.png', 'down-arrow.png']
 
 const lvlAudio = {
   0: 'ambience.mp3',
@@ -33,8 +33,8 @@ const start = {
 
 const hauntedHouse = {
   background: images[8],
-  option1: images[12],
-  option2: images[12],
+  option1: images[14],
+  option2: images[15],
   message: "Upon entering, you are confronted with disturbing figures and hear footsteps approaching. Do you run upstairs or head to the basement?",
   level: 1,
   audio: 'demongirl.mp3',
@@ -49,11 +49,9 @@ const GABuilding = {
   audio: '',
 }
 
-
-
 const basement = {
   background: images[10],
-  option1:images[12],
+  option1: images[12],
   option2: images[12],
   message: "Why would you go into the basement of a house like this? This is where we like to play...<br/> You have died horrifically.",
   level: 3,
@@ -63,7 +61,7 @@ const basement = {
 const upstairs = {
   background: images[11],
   option1: images[13],
-  option2: images[9],
+  option2: images[12],
   message: "You come upstairs and there's someone on the computer...do you try to climb out through the window or approach them?",
   level: 4,
   audio: 'ambience2.mp3'
@@ -73,7 +71,7 @@ const classroom = {
   background: images[4],
   option1: images[12],
   option2: images[12],
-  message: "You have been found by the followers...they will now convert you...<br/> You have died by coding",
+  message: "You have been found by the followers...they will now convert you...<br/> You have died by not taking a break from coding",
   level: 5,
   audio: 'chanting2.mp3',
 }
@@ -108,7 +106,6 @@ const final = {
 
 //---------------------CACHED ELEMENT REFERENCES-----
 
-
 const player = document.querySelector('#player-figure')
 
 const option1 = document.querySelector("#option1")
@@ -132,9 +129,8 @@ option1.addEventListener('click', () => {
     replace(classroom)
     toggleReplayBtn()
   } else if (lvlId === 1) {
-    replace(basement)
-    toggleReplayBtn()
-    replayBtn.style.display = "block"
+    replace(upstairs)
+    player.setAttribute('hidden', true)
   } else if (lvlId === 0) {
     replace(hauntedHouse)
   } else if (lvlId === 4) {
@@ -148,21 +144,24 @@ option2.addEventListener('click', () => {
     replace(GAInside)
     toggleReplayBtn()
   } else if (lvlId === 1) {
-    replace(upstairs)
-    player.parentElement.removeChild(player)
+    replace(basement)
+    player.setAttribute('hidden', true)
+    toggleReplayBtn()
   } else if (lvlId === 0) {
     replace(GABuilding)
     option1.addEventListener('mouseover', chant)
   } else if (lvlId === 4) {
     replace(final)
     toggleReplayBtn()
+    player.setAttribute('hidden', true)
   }
 })
-// player.addEventListener('click', () => {
-  
-// })
 
-
+player.addEventListener('click', () => {
+  audioFile = new Audio(`../assets/audio/breathing.mp3`)
+  audioFile.volume = .25
+  audioFile.play()
+})
 
 // -------------------FUNCTIONS---------------------------
 
@@ -173,7 +172,8 @@ function init() {
 
 function replay() {
   toggleReplayBtn()
-  init()
+  replace(start)
+  player.removeAttribute('hidden')
 }
 
 function replace(obj) {
@@ -190,19 +190,19 @@ function toggleStartBtn(evt) {
 }
 
 function toggleReplayBtn(evt) {
-  let switchBtn2 = replayBtn.getAttribute('hidden') !== null ? replayBtn.removeAttribute('hidden') :  replayBtn.setAttribute('hidden', true)
-  }
+  let switchBtn2 = replayBtn.getAttribute('hidden') !== null ? replayBtn.removeAttribute('hidden') : replayBtn.setAttribute('hidden', true)
+}
 
 function changeBackground(obj) {
   document.body.style.backgroundImage = `url("../assets/images/${obj.background}")`
 }
 
 function changeOption1(obj) {
-  option1.src=`../assets/images/${obj.option1}`
+  option1.src = `../assets/images/${obj.option1}`
 }
 
 function changeOption2(obj) {
-  option2.src=`../assets/images/${obj.option2}`
+  option2.src = `../assets/images/${obj.option2}`
 }
 
 function changeMessage(obj) {
@@ -217,27 +217,13 @@ function changeLevel(obj) {
 
 function chant() {
   let chanting = new Audio('../assets/audio/chanting.mp3')
-      chanting.volume = .05
-      chanting.play()
-      setTimeout(() => {
-        chant.chanting.stop()
-      }, 1000)
+  chanting.volume = .05
+  chanting.play()
+  setTimeout(() => {
+    chant.chanting.stop()
+  }, 1000)
 }
 
-
-// -------------------original function----
-// function changeAudio(obj) {  
-//     let audioFile = new Audio(`../assets/audio/${obj.audio}`)
-//     audioFile.volume = .25
-//     audioFile.play()
-//     audioFile.addEventListener('ended', () => {
-//       audioFile.currentTime = 0
-//       audioFile.play()
-//     }, false)
-//     }
-// will loop forever and overlap
-
-//--------------new function---------
 function changeAudio(obj) {
   audioFile.pause()
   audioFile = new Audio(`../assets/audio/${obj.audio}`)
@@ -248,4 +234,4 @@ function changeAudio(obj) {
     audioFile.play()
   }, false)
 }
-    
+

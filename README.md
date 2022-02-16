@@ -19,6 +19,7 @@ Outlast 2
 unsplash.com
 pexels.com
 pixabay.com
+opengameart.org
 
 Audio taken from:
 soundbible.com
@@ -26,7 +27,6 @@ clipchamp.com
 friendship <3
 
 Code taken from:
-
 for webcam - https://stackoverflow.com/questions/28140147/turn-off-webcam-camera-after-using-getusermedia
 
 
