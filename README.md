@@ -12,4 +12,22 @@ CSS
 Future enhancements may include increased levels, more interactability options, and hopefully more nightmares to your regular sleeping routine.
 
 
+Credits:
+
+Images taken from:
+Outlast 2
+unsplash.com
+pexels.com
+pixabay.com
+
+Audio taken from:
+soundbible.com
+clipchamp.com
+friendship <3
+
+Code taken from:
+
+for webcam - https://stackoverflow.com/questions/28140147/turn-off-webcam-camera-after-using-getusermedia
+
+
 

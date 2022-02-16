@@ -55,7 +55,7 @@ const basement = {
   background: images[10],
   option1:images[12],
   option2: images[12],
-  message: "Why would you go into the basement of a house like this? This is where we like to play...",
+  message: "Why would you go into the basement of a house like this? This is where we like to play...<br/> You have died horrifically.",
   level: 3,
   audio: 'demongirl2.mp3'
 }
@@ -73,7 +73,7 @@ const classroom = {
   background: images[4],
   option1: images[12],
   option2: images[12],
-  message: "You have been found by the followers...they will now convert you...",
+  message: "You have been found by the followers...they will now convert you...<br/> You have died by coding",
   level: 5,
   audio: 'chanting2.mp3',
 }
@@ -82,7 +82,7 @@ const GAInside = {
   background: images[6],
   option1: images[12],
   option2: images[12],
-  message: "Ah, I see you've come to join us...congratulations on seeing the light. You have survived.",
+  message: "Ah, I see you've come to join us...congratulations on seeing the light<br/> You have survived",
   level: 6,
   audio: 'campy-laugh.mp3'
 }
@@ -91,7 +91,7 @@ const escapeRoom = {
   background: images[3],
   option1: images[12],
   option2: images[12],
-  message: "I'm afraid you had a little fall... watch your step next time...",
+  message: "I'm afraid you had a little fall... watch your step next time...<br/> You have died by clumsiness",
   level: 7,
   audio: 'heartbeat.mp3'
 }
@@ -100,7 +100,7 @@ const final = {
   background: images[11],
   option1: images[12],
   option2: images[12],
-  message: "Congratulations...you made it to the final level. Look behind you.",
+  message: "Congratulations...you made it to the final level. Look behind you<br/> <br/> <br/> <br/>You have died by...you'll see",
   level: 8,
   audio: 'hell-ambience.mp3'
 }
@@ -162,14 +162,6 @@ option2.addEventListener('click', () => {
   
 // })
 
-function chant() {
-  let chanting = new Audio('../assets/audio/chanting.mp3')
-      chanting.volume = .05
-      chanting.play()
-      setTimeout(() => {
-        chant.chanting.stop()
-      }, 1000)
-}
 
 
 // -------------------FUNCTIONS---------------------------
@@ -223,6 +215,16 @@ function changeLevel(obj) {
   return lvlId
 }
 
+function chant() {
+  let chanting = new Audio('../assets/audio/chanting.mp3')
+      chanting.volume = .05
+      chanting.play()
+      setTimeout(() => {
+        chant.chanting.stop()
+      }, 1000)
+}
+
+
 // -------------------original function----
 // function changeAudio(obj) {  
 //     let audioFile = new Audio(`../assets/audio/${obj.audio}`)
@@ -247,4 +249,3 @@ function changeAudio(obj) {
   }, false)
 }
     
-// function webcamEnding() {}
