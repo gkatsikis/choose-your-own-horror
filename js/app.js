@@ -6,7 +6,7 @@ const images = [
   'road.jpg', 'classroom.jpg', 'computer-lab.jpg',
   'GA-inside.png','GA-room1.jpg','inside-house.jpg', 
   'portal.png', 'basement.jpg', 'final.png', 
-  'transparent.png', 'window.png']
+  'transparent.png', 'window.png',]
 
 const lvlAudio = {
   0: 'ambience.mp3',
@@ -75,7 +75,7 @@ const classroom = {
   option2: images[12],
   message: "You have been found by the followers...they will now convert you...",
   level: 5,
-  audio: 'chanting.mp3',
+  audio: 'chanting2.mp3',
 }
 
 const GAInside = {
@@ -152,9 +152,10 @@ option2.addEventListener('click', () => {
     player.parentElement.removeChild(player)
   } else if (lvlId === 0) {
     replace(GABuilding)
-    option2.addEventListener('mouseover', chant)
+    option1.addEventListener('mouseover', chant)
   } else if (lvlId === 4) {
-    console.log('final room')
+    replace(final)
+    toggleReplayBtn()
   }
 })
 // player.addEventListener('click', () => {
@@ -162,8 +163,8 @@ option2.addEventListener('click', () => {
 // })
 
 function chant() {
-  let chanting = new Audio('../assets/audio/hell-ambience.mp3')
-      chanting.volume = .15
+  let chanting = new Audio('../assets/audio/chanting.mp3')
+      chanting.volume = .05
       chanting.play()
       setTimeout(() => {
         chant.chanting.stop()
