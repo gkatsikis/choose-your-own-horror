@@ -47,7 +47,7 @@ body {
     grid-template-columns: auto auto auto;
     grid-template-areas:
     "option1 message option2"
-    ". player ."
+    "option1 video option2"
     ". player .";
   }
 
@@ -56,6 +56,12 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
+}
+
+#video-cam {
+  grid-area: video;
+  border: 1px solid red;
+  height: 50%;
 }
 
 #option1 {

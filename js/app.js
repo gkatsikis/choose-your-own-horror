@@ -154,6 +154,7 @@ option2.addEventListener('click', () => {
     replace(final)
     toggleReplayBtn()
     player.setAttribute('hidden', true)
+    webcam()
   }
 })
 
@@ -162,7 +163,6 @@ player.addEventListener('click', () => {
   audioFile.volume = .25
   audioFile.play()
 })
-
 // -------------------FUNCTIONS---------------------------
 
 function init() {
@@ -235,3 +235,30 @@ function changeAudio(obj) {
   }, false)
 }
 
+function webcam(evt) {
+  navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+        .then(mediaStream => {
+            const video = document.getElementById('video-cam');
+            video.srcObject = mediaStream;
+            video.onloadedmetadata = (e) => {
+                video.play();
+            };
+        })
+        .catch(error => {
+            alert('You have to enable the mic and the camera');
+        });
+}
+
+function webcamOff(evt) {
+  navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+        .then(mediaStream => {
+            const video = document.getElementById('video-cam');
+            video.srcObject = mediaStream;
+            video.onloadedmetadata = (e) => {
+                video.pause()
+            };
+        })
+        .catch(error => {
+            alert('You have to enable the mic and the camera');
+        });
+}
