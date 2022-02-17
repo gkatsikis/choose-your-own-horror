@@ -11,19 +11,7 @@ body {
   background-size: cover;
 }
 
-.option {
-  
-}
-
-#start-game {
-  display: none;
-}
-
-#replay {
-  display: none;
-}
-
-#player {
+main {
   display: none;
 }
 
@@ -51,17 +39,10 @@ body {
   background-image: url(../assets/images/road.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
 }
 
 #screen {
   display: none;
-}
-
-#video-cam {
-  grid-area: video;
-  border: 1px solid red;
-  height: 50%;
 }
 
 #option1 {

@@ -6,7 +6,8 @@ const images = [
   'road.jpg', 'classroom.jpg', 'computer-lab.jpg',
   'GA-inside.png', 'GA-room1.jpg', 'inside-house.jpg',
   'portal.png', 'basement.jpg', 'final.png',
-  'transparent.png', 'window.png', 'up-arrow.png', 'down-arrow.png']
+  'transparent.png', 'window.png', 'up-arrow.png', 
+  'down-arrow.png', 'approach.png']
 
 const lvlAudio = {
   0: 'ambience.mp3',
@@ -61,10 +62,10 @@ const basement = {
 const upstairs = {
   background: images[11],
   option1: images[13],
-  option2: images[12],
+  option2: images[16],
   message: "You come upstairs and there's someone on the computer...do you try to climb out through the window or approach them?",
   level: 4,
-  audio: 'ambience2.mp3'
+  audio: 'hell-ambience.mp3'
 }
 
 const classroom = {
@@ -100,7 +101,7 @@ const final = {
   option2: images[12],
   message: "Congratulations...you made it to the final level. Look behind you<br/> <br/> <br/> <br/>You have died by...you'll see",
   level: 8,
-  audio: 'hell-ambience.mp3'
+  audio: ''
 }
 
 
@@ -154,7 +155,11 @@ option2.addEventListener('click', () => {
     replace(final)
     toggleReplayBtn()
     player.setAttribute('hidden', true)
-    webcam()
+    setTimeout(() => {
+      audioFile = new Audio('../assets/audio/scream-ending.mp3')
+      audioFile.volume = .60
+      audioFile.play()
+    }, 2500)
   }
 })
 
@@ -227,38 +232,10 @@ function chant() {
 function changeAudio(obj) {
   audioFile.pause()
   audioFile = new Audio(`../assets/audio/${obj.audio}`)
-  audioFile.volume = .25
+  audioFile.volume = .15
   audioFile.play()
   audioFile.addEventListener('ended', () => {
     audioFile.currentTime = 0
     audioFile.play()
   }, false)
-}
-
-function webcam(evt) {
-  navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-        .then(mediaStream => {
-            const video = document.getElementById('video-cam');
-            video.srcObject = mediaStream;
-            video.onloadedmetadata = (e) => {
-                video.play();
-            };
-        })
-        .catch(error => {
-            alert('You have to enable the mic and the camera');
-        });
-}
-
-function webcamOff(evt) {
-  navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-        .then(mediaStream => {
-            const video = document.getElementById('video-cam');
-            video.srcObject = mediaStream;
-            video.onloadedmetadata = (e) => {
-                video.pause()
-            };
-        })
-        .catch(error => {
-            alert('You have to enable the mic and the camera');
-        });
 }
