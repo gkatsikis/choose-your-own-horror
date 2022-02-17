@@ -1,42 +1,38 @@
-html {
+/* html {
   box-sizing: border-box;
-}
+} */
 
 :root {
   font-size: 62.5%;
 }
 
-/* main {
-  display: grid;
-  grid-template-rows: auto 50px;
-  grid-template-areas:
-  "options"
-  "player";
-}
-
 body {
-  background-image: url(../assets/images/road.jpg);
+  background-color: black;
   background-size: cover;
-  background-repeat: no-repeat;
-  height: 100%;
 }
 
-#options {
-  grid-area: options;
-  display: grid;
-  grid-template-columns: 30% auto 30%;
-  grid-template-areas:
-  "option1 message option2";
+.option {
+  
 }
 
-#option1 {
-  height: 300px;
-  grid-area: option1;
+#start-game {
+  display: none;
 }
 
-#option2 {
-  grid-area: option2;
-} */
+#replay {
+  display: none;
+}
+
+#player {
+  display: none;
+}
+
+#screen {
+  text-align: center;
+  font-family: 'Special Elite', cursive;
+  color: darkred;
+}
+
 
 @media only screen and (min-width: 600px) {
 
@@ -56,6 +52,10 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
+}
+
+#screen {
+  display: none;
 }
 
 #video-cam {

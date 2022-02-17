@@ -9,8 +9,6 @@ JavaScript
 HTML
 CSS
 
-Future enhancements may include increased levels, more interactability options, and hopefully more nightmares to your regular sleeping routine.
-
 
 Credits:
 
@@ -26,6 +24,8 @@ soundbible.com
 clipchamp.com
 friendship <3
 
+
+Future enhancements may include increased levels, more interactability options, and hopefully more nightmares to your regular sleeping routine.
 Code taken from:
 for webcam - https://stackoverflow.com/questions/28140147/turn-off-webcam-camera-after-using-getusermedia
 
