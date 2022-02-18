@@ -9,18 +9,6 @@ const images = [
   'transparent.png', 'window.png', 'up-arrow.png', 
   'down-arrow.png', 'approach.png']
 
-const lvlAudio = {
-  0: 'ambience.mp3',
-  1: 'demongirl.mp3',
-  2: 'creaking-door.mp3',
-  3: 'demongirl2.mp3',
-  4: 'ambience2.mp3',
-  5: 'chanting.mp3',
-  6: 'heartbeat.mp3',
-  7: 'campy-laugh.mp3',
-  8: 'hell-ambience.mp3',
-}
-
 let audioFile = new Audio('../assets/audio/ambience.mp3')
 
 const start = {
@@ -182,12 +170,12 @@ function replay() {
 }
 
 function replace(obj) {
-  changeLevel(obj) // done
-  changeBackground(obj) // done
-  changeOption1(obj) // done
-  changeOption2(obj) // done
-  changeMessage(obj) // done
-  changeAudio(obj) //done
+  changeLevel(obj) 
+  changeBackground(obj) 
+  changeOption1(obj) 
+  changeOption2(obj) 
+  changeMessage(obj) 
+  changeAudio(obj) 
 }
 
 function toggleStartBtn(evt) {
@@ -216,7 +204,6 @@ function changeMessage(obj) {
 
 function changeLevel(obj) {
   lvlId = obj.level
-  // audio[lvlId].pause()
   return lvlId
 }
 

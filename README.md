@@ -29,13 +29,15 @@ The game is played by choosing between the options before you and as you progres
 ### Audio:
 - soundbible.com
 - clipchamp.com
-- friendship <3
+- Robert Santella for Chanting
 
 ## Future Directions
-Future enhancements may include increased levels, more interactability options, webcam accessibility, streaming filters, and hopefully more nightmares to your regular sleeping routine.
+Future enhancements may include increased levels, countdown timer for each stage linked to a heartbeat, more interactability options (sounds & animations), webcam accessibility, streaming filters, and hopefully more nightmares to your regular sleeping routine.
 
 ### Code:
 [webcam code](https://stackoverflow.com/questions/28140147/turn-off-webcam-camera-after-using-getusermedia)
 
+### Story Idea
+Based off of the mythology surrounding House Khan as developed by GA instruction staff
 
 
